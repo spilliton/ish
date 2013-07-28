@@ -9,8 +9,6 @@ class IshTest < Test::Unit::TestCase
   end
 
   def test_fuzzify_fixnum
-    # assert_equal Fixnum, Ish.fuzzify(19).class, 'should always return fixum if passed a fixnum'
-
     assert_returns_all([19, 20, 21]) do
       Ish.fuzzify(20)
     end
@@ -21,6 +19,60 @@ class IshTest < Test::Unit::TestCase
 
     assert_always_between(90, 110) do 
       Ish.fuzzify(100)
+    end
+
+    assert_returns_all([0, 1, 2]) do
+      Ish.fuzzify(1)
+    end
+
+    assert_returns_all([-1, 0, 1]) do
+      Ish.fuzzify(0)
+    end
+
+    assert_returns_all([-2, -1, 0]) do
+      Ish.fuzzify(-1)
+    end
+
+    assert_returns_all([-21, -20, -19]) do
+      Ish.fuzzify(-20)
+    end
+  end
+
+  def test_fuzzify_fixnum_with_custom_offset
+    assert_returns_all([-2, -1, 0, 1, 2]) do
+      Ish.fuzzify(0, max_offset: 2)
+    end
+
+    assert_returns_all([47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]) do
+      Ish.fuzzify(52, max_offset: 5)
+    end
+  end
+
+  def test_fuzzify_fixnum_with_custom_precision
+    assert_returns_all([-98, -99, -100, -101, -102]) do 
+      Ish.fuzzify(-100, precision: 0.02)
+    end
+  end
+
+  def test_fuzzify_float
+    assert_always_between(0.95, 1.05) do 
+      Ish.fuzzify(1.0)
+    end
+
+    assert_always_between(-1.05, -0.95) do 
+      Ish.fuzzify(-1.0)
+    end    
+  end
+
+  def test_fuzzify_float_with_custom_offset
+     assert_always_between(90, 110) do 
+      Ish.fuzzify(100.0, max_offset: 10)
+    end
+  end
+
+  def test_fuzzify_float_with_custom_precision
+     assert_always_between(90, 110) do 
+      Ish.fuzzify(100.0, precision: 0.10)
     end
   end
 

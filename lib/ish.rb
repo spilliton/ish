@@ -12,23 +12,43 @@ module Ish
     @default_precision = val
   end
 
-  def self.fuzzify(num)
-    plus_minus = num * default_precision
+  def self.fuzzify(num, opts={})
+    raise "argumanet must be a number!" if !num.respond_to?(:abs)
 
+    offset = offset_from_opts(num, opts)
+
+    # min offset for fixnum is 1
+    offset = 1 if num.is_a?(Fixnum) && offset.abs < 1
+
+    result = num + rand_offset(offset)
+
+    # Fixnum in, fixnum out, aka FIFO
     if num.is_a? Fixnum
-      plus_minus = plus_minus.to_i
+      result.to_i 
+    else
+      result
     end
+  end
 
-    term = rand(plus_minus + 1) 
-    term = term * -1 if rand(2) == 1 # sometimes minus
+  private
 
-    num + term
+  def self.offset_from_opts(num, opts={})
+    precision = opts[:precision] || default_precision
+
+    if max_off = opts[:max_offset]  
+      raise ":max_offset must be a number!" if !max_off.respond_to?(:abs)
+      max_off.abs
+    else
+      num.abs * precision  
+    end
+  end
+
+  def self.rand_offset(offset)
+    range = offset + 1 # because rand(1) only returns 0
+    term = rand(range) 
+    term *= -1 if rand(2) == 0 # minus half the time
+    term
   end
 
 end
 
-
-# # Mix it in
-# class Fixnum
-#   include Ish::Fixnum
-# end

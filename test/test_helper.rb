@@ -4,6 +4,7 @@ require 'test/unit'
 require 'ish'
 
 INITIAL_DEFAULT_PRECISION = Ish.default_precision
+SAMPLE_RATE = 200
 
 class Test::Unit::TestCase
 
@@ -12,20 +13,30 @@ class Test::Unit::TestCase
   end
 
   def assert_returns_all(arr)
-    100.times do
+    seen = arr.clone
+    unexpected = []
+    SAMPLE_RATE.times do
       val = yield
-      arr.delete(val)
+      if arr.include? val
+        seen.delete(val)
+      else
+        unexpected << val
+      end
     end
 
-    if arr.length > 0
+    unexpected.uniq!
+
+    if seen.length > 0
       assert false, "#{arr} values were never returned"
+    elsif unexpected.length > 0
+      assert false, "#{unexpected} values were returned unexpectedly"
     else
       assert true
     end
   end
 
   def assert_always_between(low, high)
-    100.times do 
+    SAMPLE_RATE.times do 
       val = yield
       if val < low || val > high
         assert false, "#{val} was not between #{low} and #{high}"
