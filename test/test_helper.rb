@@ -17,6 +17,7 @@ class Test::Unit::TestCase
     unexpected = []
     SAMPLE_RATE.times do
       val = yield
+      # puts val
       if arr.include? val
         seen.delete(val)
       else
@@ -38,6 +39,7 @@ class Test::Unit::TestCase
   def assert_always_between(low, high)
     SAMPLE_RATE.times do 
       val = yield
+      # puts val
       if val < low || val > high
         assert false, "#{val} was not between #{low} and #{high}"
       end
