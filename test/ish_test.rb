@@ -104,6 +104,13 @@ class IshTest < Test::Unit::TestCase
     assert_always_between(five_min_ago, five_min_from_now) do 
       now.ish
     end
+
+    one_min_ago = now - 60
+    one_min_from_now = now + 60
+
+    assert_always_between(one_min_ago, one_min_from_now) do 
+      now.ish(offset: 60)
+    end
   end
 
 end

@@ -1,7 +1,9 @@
 $LOAD_PATH << File.join(File.dirname(__FILE__), '..', 'lib')
 require 'rubygems'
 require 'test/unit'
+require 'active_support/all'
 require 'ish'
+
 
 INITIAL_DEFAULT_PRECISION = Ish.default_precision
 SAMPLE_RATE = 200

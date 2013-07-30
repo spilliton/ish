@@ -97,3 +97,7 @@ class Time
   include Ish::Time
 end
 
+class DateTime
+  include Ish::Time
+end
+
