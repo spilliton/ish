@@ -37,6 +37,7 @@ If you have active support, times are even more fun:
 2.hours.ish # => 7201 seconds
 1.day.from_now # => Wed, 31 Jul 2013 16:43:05 UTC +00:00
 1.day.ish.from_now # => Wed, 31 Jul 2013 17:50:44 UTC +00:00
+1.hour.ish(offset: 10.minutes).from_now # => Tue, 30 Jul 2013 18:03:20 UTC +00:00
 ```
 
 
