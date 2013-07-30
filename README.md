@@ -30,7 +30,7 @@ Time.now.ish   # => 2013-07-30 11:53:33 -0500
 Time.now.ish(offset: 1000000) # => 2013-07-26 16:31:06 -0500
 ```
 
-If you have active support, times are even more fun:
+If you use active support, times are even more fun!
 
 ``` ruby
 2.hours.ish # => 7215 seconds
@@ -60,4 +60,4 @@ Ish.default_precision = 0.5  # default is 0.05
 Ish.default_time_offset_seconds = 100000000000  # default is 300
 ```
 
-Then all calls without params specified will use those values
+All calls to ish without params will now use those values
