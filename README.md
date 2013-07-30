@@ -17,6 +17,11 @@ Ish is a ruby gem for when random 'fuzzy' numeric/time results are desired.  Som
 100.ish(precision: 0.5) # => 135
 100.ish(offset: 90)     # => 17
 
+# if the integer would yield an offest less than 1, then 1 is the offset
+0.ish  # => 1
+0.ish  # => 0
+-1.ish # => -2
+
 # floats return floats
 (1.0).ish # => 1.0017225780713743
 (50.0).ish(precision: 0.5) # => 37.131807291843145
