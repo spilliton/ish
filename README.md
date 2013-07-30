@@ -1,6 +1,6 @@
 # ish
 
-<!-- [![Gem Version](https://badge.fury.io/rb/ish.png)](http://badge.fury.io/rb/ish) -->
+[![Gem Version](https://badge.fury.io/rb/ish.png)](http://badge.fury.io/rb/ish)
 [![Build Status](https://secure.travis-ci.org/spilliton/ish.png?branch=master)](http://travis-ci.org/spilliton/ish)
 [![Code Climate](https://codeclimate.com/github/spilliton/ish.png)](https://codeclimate.com/github/spilliton/ish)
 
