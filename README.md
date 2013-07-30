@@ -4,7 +4,7 @@
 [![Build Status](https://secure.travis-ci.org/spilliton/ish.png?branch=master)](http://travis-ci.org/spilliton/ish)
 [![Code Climate](https://codeclimate.com/github/spilliton/ish.png)](https://codeclimate.com/github/spilliton/ish)
 
-Ish is a ruby gem that when random 'fuzzy' numeric results are desired.  Some quick examples:
+Ish is a ruby gem for when random 'fuzzy' numeric/time results are desired.  Some quick examples:
 
 ``` ruby
 # integers always return integers
