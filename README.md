@@ -8,8 +8,8 @@ Ish is a ruby gem for when random 'fuzzy' numeric/time results are desired.  Som
 
 ``` ruby
 # integers always return integers
-1000.ish # => 99
-1000.ish # => 104
+100.ish # => 99
+100.ish # => 104
 
 # the default precision is 0.05, meaning the plus/minus range (offset)
 # is 5% of the input number (so default offset of 100 is 5)
