@@ -1,6 +1,6 @@
 $:.unshift '.'; require File.dirname(__FILE__) + '/test_helper'
 
-class IshTest < Test::Unit::TestCase
+class IshTest < Minitest::Test
 
   def test_default_precission
     assert_equal 0.05, Ish.default_precision

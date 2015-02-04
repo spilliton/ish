@@ -1,6 +1,6 @@
 $LOAD_PATH << File.join(File.dirname(__FILE__), '..', 'lib')
 require 'rubygems'
-require 'test/unit'
+require 'minitest/autorun'
 require 'active_support/all'
 require 'ish'
 
@@ -8,7 +8,7 @@ require 'ish'
 INITIAL_DEFAULT_PRECISION = Ish.default_precision
 SAMPLE_RATE = 200
 
-class Test::Unit::TestCase
+class Minitest::Test
 
   def setup
     Ish.default_precision = INITIAL_DEFAULT_PRECISION
